@@ -1,6 +1,6 @@
 <?php
 
-class Student  
+class Car 
 {
     private $db;
 
@@ -9,12 +9,17 @@ class Student
         $this->db = new Database();
     }
 
-    public function login($username, $password)
+    public function delete($id)
     {
         #logique
     }
 
-    public function rent($carId)
+    public function update($id)
+    {
+        # code...
+    }
+
+    public function create()
     {
         # code...
     }

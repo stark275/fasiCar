@@ -1,6 +1,6 @@
 <?php
 
-class App 
+class Client  
 {
     private $db;
 
@@ -9,8 +9,12 @@ class App
         $this->db = new Database();
     }
 
- 
-    public function listCars()
+    public function login($username, $password)
+    {
+        #logique
+    }
+
+    public function rent($carId)
     {
         # code...
     }
