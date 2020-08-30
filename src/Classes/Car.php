@@ -13,10 +13,30 @@ class Car
     {
         return $this->db->query("SELECT * FROM t_voitures");
     }
+       /**
+     * Details d'un vehicule
+     * @return array
+     */
+    public function details($id)
+    {
+        return  $this->db->prepare(
+            "SELECT * FROM t_voitures
+             WHERE id = :id",
+             ['id' => $id]
+        );
+    }
 
+    /**
+     * Supprime un vehicule
+     * @return array
+     */
     public function delete($id)
     {
-        #logique
+        return  $this->db->write(
+            "DELETE FROM t_voitures
+             WHERE id = :id",
+             ['id' => $id]
+        );
     }
 
       /**
@@ -25,7 +45,32 @@ class Car
      */
     public function update($id)
     {
-        # code...
+       $errors =[];
+       $app = new App();
+
+       extract($_POST);
+
+       if ($app->formIsEmpty(['categorie','marque','model'])) {
+           $errors[] = "Completez tous les champs";
+       }
+       else {
+          $this->db->write(
+            "UPDATE t_voitures
+             SET categorie = :categorie,
+                 marque = :marque,
+                 model = :model
+            WHERE id = :id",
+
+            [
+                'categorie' => $categorie,
+                'marque' => $marque,
+                'model' => $model,
+                'id' => $id
+            ]
+         );
+        }
+
+       return $errors;
     }
 
      /**
@@ -64,7 +109,7 @@ class Car
     /**
      * Verifie si une immatriculation existe en bdd
      * @param $immatr string  
-     * @return array
+     * @return bool
      */
     private function carExists($immatr)
     {
