@@ -1,11 +1,12 @@
 <?php
 	require dirname(__DIR__).'/classLoader.php';
-	$app = new App();
-	var_dump($app->listCars());
-	die();
+	// $client = new Client();
+	// var_dump($app->rent(1));
+	//  die();
 ?>
 
 <?php include('partials/head.php');?>
+
 <div class="hero-wrap ftco-degree-bg" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -92,7 +93,7 @@
 					            </div>      
 					          </div>
 					        </div>
-					        <p><a href="#" class="btn btn-primary py-3 px-4">Nos Véhicule</a></p>
+					        <p><a href="list.php" class="btn btn-primary py-3 px-4">Nos Véhicule</a></p>
 	  						</div>
 	  					</div>
 	  				</div>

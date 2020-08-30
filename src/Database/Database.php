@@ -17,7 +17,7 @@ class Database
     {
         if($this->pdo === null){
             $pdo = new PDO(
-                "mysql:dbname=myfasi;host=localhost" ,
+                "mysql:dbname=fasicar;host=localhost" ,
                 "root", 
                 "",
                 array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
@@ -57,10 +57,19 @@ class Database
     {
         $pdo = $this->getPDO();
         $req = $pdo->prepare($requete);
-        $res->setFetchMode(PDO::FETCH_OBJ);
+        $req->setFetchMode(PDO::FETCH_OBJ);
         $bool = $req->execute($param);
+        $data = $req->fetchAll();
 
         return $data;
+    }
+
+    public function write($requete, $param)
+    {
+        $pdo = $this->getPDO();
+        $req = $pdo->prepare($requete);
+        $req->setFetchMode(PDO::FETCH_OBJ);
+        return $req->execute($param); 
     }
 
 

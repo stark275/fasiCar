@@ -11,12 +11,25 @@ class Client
 
     public function login($username, $password)
     {
-        #logique
+        $this->db->prepare(
+            "SELECT * FROM t_clients 
+            WHERE pseudo = :pseudo AND password = :password",
+            ['pseudo' => $username, 'password' => $password] );
     }
 
     public function rent($carId)
     {
-        # code...
+        echo '<pre>';
+         var_dump(
+
+
+             $this->db->prepare(
+                "SELECT * FROM si_teachers WHERE id = :id",
+                ['id' => 1]
+            ));
+
+            
+        echo '</pre>';
     }
 
     

@@ -11,10 +11,21 @@ class App
 
     public function listCars()
     {
-        // echo '<pre>';
-        // var_dump($this->db->query("SELECT * FROM si_teachers"));
-        // echo '</pre>';
+      
 
     }
+
+    public function formIsEmpty($field = [])
+	{
+		if (count($field) > 0) {
+			foreach ($field as $value) {
+				if (empty($_POST[$value]) || trim($_POST[$value]) == '') {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
   
 }
