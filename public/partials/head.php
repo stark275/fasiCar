@@ -37,9 +37,18 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
+            <?php if (isset($_SESSION['client'])): ?>
 	          <li class="nav-item active"><a href="index.html" class="nav-link">Véhicules</a></li>
 	          <li class="nav-item"><a href="login.php" class="nav-link">Connexion</a></li>
-	          <li class="nav-item"><a href="register.php" class="nav-link">S'inscrire</a></li>
+            <li class="nav-item"><a href="register.php" class="nav-link">S'inscrire</a></li>
+            <?php endif ?>
+            
+            <?php if (isset($_SESSION['admin'])): ?>
+               <li class="nav-item active"><a href="car.list.php" class="nav-link">Véhicules</a></li>
+               <li class="nav-item active"><a href="car.locations.php" class="nav-link">Locations</a></li>
+               <li class="nav-item active"><a href="logout.php" class="nav-link">Deconnexion</a></li>
+               <li class="nav-item active"><strong><?= $_SESSION['nom'] ?></strong></li>
+            <?php endif ?>
 	        </ul>
 	      </div>
 	    </div>
