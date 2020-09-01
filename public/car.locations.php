@@ -1,5 +1,6 @@
 <?php
-	require dirname(__DIR__).'/classLoader.php';
+    require dirname(__DIR__).'/classLoader.php';
+    $errors = [];
      $location = new Location();
     //  echo '<pre>';
 	//     var_dump($location->list());
@@ -7,6 +8,21 @@
     //  echo '</pre>';
     $locations = $location->list();
     $i = 1;
+
+    if (isset($_POST['filter'])) {
+        $errors = $location->checkPeriod();
+
+        if (count($errors) == 0) {
+            $locations = $location->byPeriod();
+            echo '<pre>';
+            var_dump($locations);
+            echo '</pre>';
+            die();
+        }
+        
+    }
+
+   // (new App())->dateFormate('2/8/2002');
 ?>
 <?php include('partials/head.php');?>
 
@@ -23,6 +39,45 @@
 
     <section class="ftco-section bg-light">
     	<div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <form method="post">
+                        <!-- <div class="form-group">
+                            <label for="sel1">Select list:</label>
+                            <select class="form-control" id="sel1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div> -->
+                    <dic class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="" class="label">Debut</label>
+                                <input type="text" name="debut" class="form-control" id="book_off_date" placeholder="Time">
+                            </div>
+                        </div>
+
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="" class="label">Fin</label>
+                                <input type="text" name="fin" class="form-control" id="book_off_date" placeholder="Time">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="submit" name="filter" class="form-control btn btn-primary"  value="Filtrer">
+                            </div>
+                        </div>
+                    </dic>
+
+                    
+
+                    </form>
+                </div>
+            </div>
+            
     		<div class="row">
 				<div class="col-md-12">
     			    <table class="table table-bordered">

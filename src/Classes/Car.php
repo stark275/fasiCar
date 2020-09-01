@@ -9,11 +9,13 @@ class Car
         $this->db = new Database();
     }
 
+  
+
     public function list()
     {
         return $this->db->query("SELECT * FROM t_voitures");
     }
-       /**
+     /**
      * Details d'un vehicule
      * @return array
      */

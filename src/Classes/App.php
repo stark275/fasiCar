@@ -27,5 +27,21 @@ class App
 		return false;
 	}
 
+
+	public function dateFormate($date)
+	{
+		$time = strtotime($date);
+		$newformat = date('Y-m-d',$time);
+		return $newformat;
+	}
+
+	public function periodIsvalid($begin, $end)
+	{
+		if ($this->dateFormate($begin) < $this->dateFormate($end)) {
+			return true;
+		}
+		return false;
+	}
+
   
 }

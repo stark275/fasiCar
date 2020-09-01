@@ -9,6 +9,36 @@ class Location
         $this->db = new Database();
     }
 
+    public function byPeriod()
+    {
+        $app = new App();
+        extract($_POST);
+        return $this->db->prepare("
+            SELECT * FROM t_locations
+            WHERE debut >= :debut AND
+                  fin <= :fin",
+        [
+            'debut' => $app->dateFormate($debut),
+            'fin' => $app->dateFormate($fin)
+        ]);
+    }
+
+    public function checkPeriod()
+    {
+       $errors =[];
+       $app = new App();
+
+       extract($_POST);
+
+       if ($app->formIsEmpty(['debut','fin'])) {
+           $errors[] = "Completez tous les champs";
+       }
+       elseif (!$app->periodIsvalid($debut, $fin)) {
+           $errors[] = "Periode invalide";      
+       }
+       return $errors;
+    }
+
     public function list()
     {
       return $this->db->query("
@@ -26,4 +56,9 @@ class Location
             ON l.voiture_id = v.id
       ");
     } 
+
+    public function filter()
+    {
+        
+    }
 }
