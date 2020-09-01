@@ -94,13 +94,13 @@ class Car
        }
        else {
            $this->db->write(
-               "INSERT INTO t_voitures (categorie,marque,model,immatr)
-                VALUES (:categorie,:marque,:model,:immatr)",
+               "INSERT INTO t_voitures (categorie,marque,model,imatriculation)
+                VALUES (:categorie,:marque,:model,:imatriculation)",
                 [
                     'categorie' => $categorie,
                     'marque' => $marque,
                     'model' => $model,
-                    'immatr' => $immatr
+                    'imatriculation' => $immatr
                 ]
             );
        }
@@ -117,9 +117,9 @@ class Car
     {
        $result = $this->db->prepare(
             "SELECT * FROM t_voitures
-             WHERE immatr = :immatr",
+             WHERE imatriculation = :imatriculation",
             [
-                'immatr' => $immatr
+                'imatriculation' => $immatr
             ]
         );
 

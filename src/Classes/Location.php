@@ -14,7 +14,18 @@ class Location
         $app = new App();
         extract($_POST);
         return $this->db->prepare("
-            SELECT * FROM t_locations
+            SELECT 
+                l.*, 
+                c.nom,
+                v.categorie,
+                v.marque,
+                v.model,
+                v.imatriculation
+            FROM t_locations l
+            JOIN t_clients c
+                ON l.client = c.id
+            JOIN t_voitures v
+                ON l.voiture = v.id
             WHERE debut >= :debut AND
                   fin <= :fin",
         [
@@ -48,12 +59,12 @@ class Location
             v.categorie,
             v.marque,
             v.model,
-            v.immatr
+            v.imatriculation
         FROM t_locations l
         JOIN t_clients c
-            ON l.client_id = c.id
+            ON l.client = c.id
         JOIN t_voitures v
-            ON l.voiture_id = v.id
+            ON l.voiture = v.id
       ");
     } 
 

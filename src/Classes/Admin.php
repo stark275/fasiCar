@@ -37,12 +37,12 @@ class Admin
     private function adminInfo($username, $password)
     {
         $result = $this->db->prepare(
-            "SELECT * FROM t_admins
-             WHERE identifiant = :identifiant
-                AND mot_de_passe = :mot_de_passe",
+            "SELECT * FROM t_admin
+             WHERE pseudo = :pseudo
+                AND mot_de_passe = :pseudo",
             [
-                'identifiant' => $username,
-                'mot_de_passe' => $password
+                'pseudo' => $username,
+                'pseudo' => $password
             ]
         );
 
@@ -53,12 +53,12 @@ class Admin
     private function exists($username, $password)
     {
         $result = $this->db->prepare(
-            "SELECT * FROM t_admins
-             WHERE identifiant = :identifiant
-                AND mot_de_passe = :mot_de_passe",
+            "SELECT * FROM t_admin
+             WHERE pseudo = :pseudo
+                AND mot_de_passe = :password",
             [
-                'identifiant' => $username,
-                'mot_de_passe' => $password
+                'pseudo' => $username,
+                'password' => $password
             ]
         );
 

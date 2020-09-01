@@ -17,7 +17,7 @@ class Database
     {
         if($this->pdo === null){
             $pdo = new PDO(
-                "mysql:dbname=fasicar;host=localhost" ,
+                "mysql:dbname=location_vehicules;host=localhost" ,
                 "root", 
                 "",
                 array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',

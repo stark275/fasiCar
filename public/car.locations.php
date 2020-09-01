@@ -14,10 +14,10 @@
 
         if (count($errors) == 0) {
             $locations = $location->byPeriod();
-            echo '<pre>';
-            var_dump($locations);
-            echo '</pre>';
-            die();
+            // echo '<pre>'; 
+            // var_dump($locations);
+            // echo '</pre>';
+            // die();
         }
         
     }
@@ -72,9 +72,7 @@
                         </div>
                     </dic>
 
-                    
-
-                    </form>
+                </form>
                 </div>
             </div>
             
@@ -100,7 +98,7 @@
                                         
                                     </td>
                                     <td>
-                                        <?= $loc->immatr?>,
+                                        <?= $loc->imatriculation ?>,
                                     </td>
                                     <td> <?= $loc->nom?></td>
                                     <td> <?= $loc->debut.' => <br>'.$loc->fin?></td> 
