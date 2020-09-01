@@ -3,14 +3,8 @@
 
     $errors = [];
     if (isset($_POST['add'])) {
-        // var_dump("looo");
-        // die();
-
-      
         $car = new Car();
         $errors = $car->create();
-
-        //var_dump($errors);
     }
 ?>
 

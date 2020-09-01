@@ -9,6 +9,11 @@ class Location
         $this->db = new Database();
     }
 
+    /**
+     * Recupere les locations d'une periode donnée
+     * @return array
+     * Execute une requète pre SQL
+     */
     public function byPeriod()
     {
         $app = new App();
@@ -34,6 +39,11 @@ class Location
         ]);
     }
 
+    /**
+     * Verifie si la periode selectionée est valide
+     * @return array
+     * Execute une requète pre SQL
+     */
     public function checkPeriod()
     {
        $errors =[];
@@ -50,6 +60,11 @@ class Location
        return $errors;
     }
 
+    /**
+     * Recupere les locations
+     * @return array
+     * Execute une requète pre SQL
+     */
     public function list()
     {
       return $this->db->query("

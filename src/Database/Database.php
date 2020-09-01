@@ -64,6 +64,12 @@ class Database
         return $data;
     }
 
+    /**
+     * @param $requete string La requète SQL (SELECT ou UPDATE ou DELETE)
+     * @param $param array Liste des valeurs à remplacer dans requète 
+     * @return int
+     * Execute une requète pre SQL
+     */
     public function write($requete, $param)
     {
         $pdo = $this->getPDO();

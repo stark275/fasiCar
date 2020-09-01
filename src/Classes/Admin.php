@@ -9,6 +9,11 @@ class Admin
         $this->db = new Database();
     }
 
+    /**
+     * Connecte l'admin
+     * @return array
+     * Execute une requète pre SQL
+     */
     public function login()
     {
        $errors =[];
@@ -30,32 +35,42 @@ class Admin
             header('Location:car.list.php');
             exit();
        }
-
        return $errors;
     }
 
+    /**
+     * Recupere les infos de l'admin 
+     * @param $username string
+     * @param $password string  
+     * @return array
+     * Execute une requète pre SQL
+     */
     private function adminInfo($username, $password)
     {
         $result = $this->db->prepare(
             "SELECT * FROM t_admin
              WHERE pseudo = :pseudo
-                AND mot_de_passe = :pseudo",
+                AND password = :password",
             [
                 'pseudo' => $username,
-                'pseudo' => $password
+                'password' => $password
             ]
         );
 
         return $result[0];
     }
 
-    //A factoriser
+    /**
+     * Verifie si un administrateur existe 
+     * @return bool
+     * Execute une requète pre SQL
+     */
     private function exists($username, $password)
     {
         $result = $this->db->prepare(
             "SELECT * FROM t_admin
              WHERE pseudo = :pseudo
-                AND mot_de_passe = :password",
+                AND password = :password",
             [
                 'pseudo' => $username,
                 'password' => $password

@@ -1,7 +1,6 @@
 <?php
 	require dirname(__DIR__).'/classLoader.php';
-
-    
+ 
     $car = new Car();
    
     if (isset($_POST['update'])) {
@@ -15,11 +14,9 @@
 
     $c = $car->details($_GET['id']);
 
-    //
     if (count($c) == 0) {
         header('Location:car.list.php');
     }
-
 ?>
 
 <?php include('partials/head.php');?>

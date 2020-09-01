@@ -27,7 +27,12 @@ class App
 		return false;
 	}
 
-
+	/**
+	 * Transforme une chaine en date
+     * @param $date
+     * @return Date
+     * Execute une requète pre SQL
+     */
 	public function dateFormate($date)
 	{
 		$time = strtotime($date);
@@ -35,6 +40,13 @@ class App
 		return $newformat;
 	}
 
+	/**
+	 * Verifie si une periode est valide
+     * @param $begin
+     * @param $end  
+     * @return bool
+     * Execute une requète pre SQL
+     */
 	public function periodIsvalid($begin, $end)
 	{
 		if ($this->dateFormate($begin) < $this->dateFormate($end)) {

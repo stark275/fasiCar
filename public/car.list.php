@@ -1,8 +1,5 @@
 <?php
 	require dirname(__DIR__).'/classLoader.php';
-        // var_dump("looo");
-        // die();
-
         $car = new Car();
         $cars = $car->list();
 

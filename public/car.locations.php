@@ -2,27 +2,16 @@
     require dirname(__DIR__).'/classLoader.php';
     $errors = [];
      $location = new Location();
-    //  echo '<pre>';
-	//     var_dump($location->list());
-    //       die();
-    //  echo '</pre>';
+
     $locations = $location->list();
     $i = 1;
 
     if (isset($_POST['filter'])) {
         $errors = $location->checkPeriod();
-
         if (count($errors) == 0) {
             $locations = $location->byPeriod();
-            // echo '<pre>'; 
-            // var_dump($locations);
-            // echo '</pre>';
-            // die();
-        }
-        
+        }  
     }
-
-   // (new App())->dateFormate('2/8/2002');
 ?>
 <?php include('partials/head.php');?>
 
