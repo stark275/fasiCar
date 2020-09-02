@@ -20,7 +20,7 @@ class Admin
        $app = new App();
 
        extract($_POST);
-
+       
        if ($app->formIsEmpty(['identifiant','mot_de_passe'])) {
            $errors[] = "Completez tous les champs";
        }
@@ -37,7 +37,7 @@ class Admin
        }
        return $errors;
     }
-
+ 
     /**
      * Recupere les infos de l'admin 
      * @param $username string

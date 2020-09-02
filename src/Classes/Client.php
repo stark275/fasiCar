@@ -9,28 +9,20 @@ class Client
         $this->db = new Database();
     }
 
-    public function login($username, $password)
+    public function login($mail, $password)
     {
-        $this->db->prepare(
+        return $this->db->prepare(
             "SELECT * FROM t_clients 
-            WHERE pseudo = :pseudo AND password = :password",
-            ['pseudo' => $username, 'password' => $password] );
+            WHERE email = :mail AND password = :password AND etat=1",
+            ['mail' => $mail, 'password' => $password] );
+         /**
+     * Details d'un vehicule
+     * @return array
+     */
+        
     }
 
-    public function rent($carId)
-    {
-        echo '<pre>';
-         var_dump(
-
-
-             $this->db->prepare(
-                "SELECT * FROM si_teachers WHERE id = :id",
-                ['id' => 1]
-            ));
-
-            
-        echo '</pre>';
-    }
+   
 
     
 }

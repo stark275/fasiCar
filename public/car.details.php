@@ -1,8 +1,8 @@
 <?php
 	require dirname(__DIR__).'/classLoader.php';
- 
+  
     $car = new Car();
-   
+     
     if (isset($_POST['update'])) {
         $errors = $car->update($_GET['id']);
     }
@@ -42,7 +42,7 @@
 
         <?php if (isset($errors) && count($errors) == 0): ?>
             
-                <div class="alert alert-success" role="alert">Nouveau mise à jour</div>
+                <div class="alert alert-success" role="alert"> mise à jour effectuée</div>
             
         <?php endif ?>
 
@@ -62,7 +62,7 @@
               </div>
              
               <div class="form-group">
-                <input type="submit" name="update" value="ajouter" class="btn btn-primary py-3 px-5">
+                <input type="submit" name="update" value="Mise à jour" class="btn btn-primary py-3 px-5">
               </div>
             </form>
           

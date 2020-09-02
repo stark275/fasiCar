@@ -7,7 +7,7 @@
         $errors = $car->create();
     }
 ?>
-
+ 
 <?php include('partials/head.php');?>
 
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">

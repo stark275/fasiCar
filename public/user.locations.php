@@ -1,17 +1,44 @@
 <?php
     require dirname(__DIR__).'/classLoader.php';
+    
+    $userId = $_SESSION['id'];
+
     $errors = [];
      $location = new Location();
+     $app = new App();
+    //  echo '<pre>';
+	//     var_dump($location->list());
+    //       die();
+    //  echo '</pre>';
 
-    $locations = $location->list();
-    $i = 1;
+    $locations = $location->userLocations($userId);
+
   
+
+    $i = 1;
+
+    if (isset($_POST['delete'])) {
+        $idLocaction = $_POST['idLocaction'];
+         var_dump($idLocaction);
+        $errors = $location->deleteUserLocation($idLocaction);
+        var_dump($errors);
+        header('Location:user.locations.php');
+    }
+
     if (isset($_POST['filter'])) {
         $errors = $location->checkPeriod();
+
         if (count($errors) == 0) {
             $locations = $location->byPeriod();
-        }  
+            echo '<pre>';
+            var_dump($locations);
+            echo '</pre>';
+            die();
+        }
+        
     }
+
+   // (new App())->dateFormate('2/8/2002');
 ?>
 <?php include('partials/head.php');?>
 
@@ -31,7 +58,15 @@
             <div class="row">
                 <div class="col-md-6">
                     <form method="post">
-        
+                        <!-- <div class="form-group">
+                            <label for="sel1">Select list:</label>
+                            <select class="form-control" id="sel1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div> -->
                     <dic class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -53,19 +88,22 @@
                         </div>
                     </dic>
 
-                </form>
+                    
+
+                    </form>
                 </div>
             </div>
             
     		<div class="row">
 				<div class="col-md-12">
-    			    <table class="table table-bordered">
+    			    <table class="table table-bordered text-center">
                          <thead> 
                             <tr> <th>#</th>
                             <th>Vehicules</th>
-                            <th>Immatr.</th>
-                            <th>Client</th> 
-                            <th>Reservation</th>
+                            <th>Debut</th>
+                            <th>Fin</th> 
+                            <th>Tarif</th>
+                             <th>Annuler</th>
                             </tr>
                         </thead> 
                         <tbody> 
@@ -73,16 +111,24 @@
                                 <tr> 
                                     <th scope="row"><?= $i ?></th> 
                                     <td>
-                                         <?= $loc->categorie?>, 
+                                         
                                         <?= $loc->marque?>,
-                                        <?= $loc->model?>,
+                                        <?= $loc->model?>
                                         
                                     </td>
                                     <td>
-                                        <?= $loc->imatriculation ?>,
+                                        <?=$app->dateReFormate($loc->debut) ?>
                                     </td>
-                                    <td> <?= $loc->nom?></td>
-                                    <td> <?= $loc->debut.' => <br>'.$loc->fin?></td> 
+                                    <td> <?= $app->dateReFormate($loc->fin) ?></td>
+                                    <td><?= $loc->tarif?>$/jour </td>
+                                    <td>
+                                        <form action="<?php $_SERVER['PHP_SELF']?>" method="POST">
+                                            <input type="hidden" name="idLocaction" value="<?= 
+                                            $loc->id ?>">
+                                            <input type="submit" name="delete" value="Annuler" class="btn btn-danger py-3 px-5">
+                                        
+                                        </form> 
+                                    </td> 
                                 </tr> 
                                 <?php $i++;?>
                             <?php endforeach ?>   

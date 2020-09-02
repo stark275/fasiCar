@@ -38,8 +38,13 @@ class App
 		$time = strtotime($date);
 		$newformat = date('Y-m-d',$time);
 		return $newformat;
-	}
+	} // 2020-02-12
 
+	public function dateReFormate($date){
+		$time = strtotime($date);
+		$newformat = date('d-m-y',$time);
+		return $newformat;
+	}
 	/**
 	 * Verifie si une periode est valide
      * @param $begin

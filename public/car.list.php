@@ -1,7 +1,7 @@
 <?php
 	require dirname(__DIR__).'/classLoader.php';
         $car = new Car();
-        $cars = $car->list();
+        $cars = $car->list(); 
 
 ?>
 
@@ -33,9 +33,12 @@
     						<h2 class="mb-0"><a href="car-single.html"><?= $car->model?></a></h2>
     						<div class="d-flex mb-3">
 	    						<span class="cat"><?= $car->marque?></span>
-	    						<p class="price ml-auto"><?= $car->tarif ?> <span>/day</span></p>
+	    						<p class="price ml-auto"><?= $car->tarif ?>$ <span>/day</span></p>
     						</div>
-    						<p class="d-flex mb-0 d-block"><a href="car.details.php?id=<?= $car->id ?>" class="btn btn-primary py-2 mr-1">Modifier</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
+    						<p class="d-flex mb-0 d-block">
+								<a href="car.details.php?id=<?= $car->id ?>" class="btn btn-primary py-2 mr-1">Modifier</a> 
+							 	<a href="car.info.php?id=<?= $car->id ?>" class="btn btn-secondary py-2 ml-1">Details</a>
+							 </p>
     					</div>
     				</div>
 				</div>
